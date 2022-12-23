@@ -9,7 +9,7 @@ import * as EmailController from "./Controllers/EmailController.js";
 
 mongoose
   .connect(
-    process.env.MONGODB_URI
+    "mongodb+srv://KLL00-1:Veritas1)@cluster0.4rv9v1z.mongodb.net/block?retryWrites=true&w=majority"
   )
   .then(() => {
     console.log("DB ok!");
@@ -19,7 +19,7 @@ mongoose
   });
 mongoose.set("strictQuery", false);
 
-const PORT = 5000;
+// const PORT = 5000;
 
 const app = express();
 
@@ -61,4 +61,6 @@ app.post("/email", EmailController.createEmail);
 
 app.get("/email", EmailController.getEmails);
 
-app.listen(PORT, () => console.log("server start on PORT: " + PORT));
+app.listen(process.env.PORT || 5000, () =>
+  console.log("server start on PORT: " + PORT)
+);
