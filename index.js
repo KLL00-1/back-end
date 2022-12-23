@@ -9,7 +9,7 @@ import * as EmailController from "./Controllers/EmailController.js";
 
 mongoose
   .connect(
-    "mongodb+srv://KLL00-1:Veritas1)@cluster0.4rv9v1z.mongodb.net/block?retryWrites=true&w=majority"
+    process.env.MONGODB_URI
   )
   .then(() => {
     console.log("DB ok!");
