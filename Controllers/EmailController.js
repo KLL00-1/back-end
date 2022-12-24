@@ -2,6 +2,14 @@ import MessageModal from "../models/Message.js";
 
 export const createEmail = async (req, res) => {
   try {
+    const email = await MessageModal.findOne({ email: req.body.email });
+
+    if (email) {
+      return res.status(500).json({
+        message: "such mail already exists",
+      });
+    }
+
     const doc = new MessageModal({
       email: req.body.email,
     });

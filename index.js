@@ -3,6 +3,7 @@ import cors from "cors";
 import multer from "multer";
 import mongoose from "mongoose";
 import { registValidator } from "./validations/auth.js";
+import { emailValidator } from "./validations/emailValid.js";
 import checkAuth from "./itils/checkAuth.js";
 import * as UserController from "./Controllers/UserController.js";
 import * as EmailController from "./Controllers/EmailController.js";
@@ -59,7 +60,7 @@ app.get("/auth/me", checkAuth, UserController.getMe);
 
 app.post("/auth/register", registValidator, UserController.registerUser);
 
-app.post("/email", EmailController.createEmail);
+app.post("/email", emailValidator, EmailController.createEmail);
 
 app.get("/email", EmailController.getEmails);
 
